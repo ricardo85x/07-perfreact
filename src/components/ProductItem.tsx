@@ -5,15 +5,20 @@ interface ProductItemProps {
         id: number;
         price: number;
         title: string;
-    }
+    },
+    onAddToWishList: (id: number) => void;
 }
 
 
-const ProductItemComponent = ({product} : ProductItemProps) => {
+const ProductItemComponent = ( { product, onAddToWishList } : ProductItemProps) => {
 
     return (
-        <div>
-            {product.title} - <strong>{product.price}</strong>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span>{product.title} - <strong>{product.price}</strong></span>
+            <button style={{marginLeft: 10}} onClick={() => onAddToWishList(product.id)}>
+                Add to wish list
+            </button>
+
         </div>
     )
 }

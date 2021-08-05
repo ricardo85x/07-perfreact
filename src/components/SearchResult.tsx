@@ -8,10 +8,11 @@ interface SearchResultProps {
         id: number;
         price: number;
         title: string;
-    }>
+    }>,
+    onAddToWishList: (id: number) => void;
 }
 
-export const SearchResult = ({ results }: SearchResultProps) => {
+export const SearchResult = ({ results, onAddToWishList }: SearchResultProps) => {
 
 
     const totalPrice = useMemo( () => 
@@ -22,15 +23,22 @@ export const SearchResult = ({ results }: SearchResultProps) => {
 
     return (
         <>
-            <b> Total: {totalPrice.toLocaleString("pt-br", {
-                style: "currency",
-                currency: "BRL"
-            })}
-            </b>
+            <strong> 
+                Total: {
+                    totalPrice.toLocaleString("pt-br", {
+                        style: "currency",
+                        currency: "BRL"
+                    }
+                )}
+            </strong>
             <hr />
             <div>
                 {results.map(product =>
-                    <ProductItem key={product.id} product={product} />
+                    <ProductItem 
+                        onAddToWishList={onAddToWishList} 
+                        key={product.id} 
+                        product={product} 
+                    />
                 )}
             </div>
         </>
