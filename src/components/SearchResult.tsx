@@ -1,4 +1,6 @@
-import {ProductItem} from "./ProductItem"
+import { ProductItem } from "./ProductItem"
+
+import { useMemo } from "react"
 
 
 interface SearchResultProps {
@@ -9,13 +11,28 @@ interface SearchResultProps {
     }>
 }
 
-export const SearchResult = ({results} : SearchResultProps) => {
-    
+export const SearchResult = ({ results }: SearchResultProps) => {
+
+
+    const totalPrice = useMemo( () => 
+        results.reduce((total, product) => 
+            total + product.price, 
+        0),
+    [results])
+
     return (
-        <div>
-            {results.map( product => 
-                <ProductItem key={product.id} product={product} /> 
-            )}
-        </div>
+        <>
+            <b> Total: {totalPrice.toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL"
+            })}
+            </b>
+            <hr />
+            <div>
+                {results.map(product =>
+                    <ProductItem key={product.id} product={product} />
+                )}
+            </div>
+        </>
     )
-} 
+}

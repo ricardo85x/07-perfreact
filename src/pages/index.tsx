@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <div>
       <h1>Search</h1>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} style={{marginBottom: 10}}>
         <input
           type="text" name="search"
           value={search} onChange={e => setSearch(e.target.value)}
