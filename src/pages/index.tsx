@@ -39,12 +39,10 @@ export default function Home() {
 
     const data = await response.json() as Array<ProductType>;
 
-    const formatter = new Intl.NumberFormat("pt-br", {
+    const formatter = new Intl.NumberFormat("en-us", {
       style: "currency",
-      currency: "BRL"
+      currency: "USD"
     })
-
-
 
     if (data) {
 
@@ -66,7 +64,7 @@ export default function Home() {
   }
 
   const addToWishlist = useCallback((id: number) => {
-    console.log(id)
+    console.log("Adding to wish list")
   }, [])
 
   return (
