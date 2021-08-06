@@ -1,1 +1,8 @@
-### Strategies for Optimization of React APP
+### Strategies for optimization of React APP
+
+- ### memo
+- ### useMemo
+- ### useCallback
+- ### react/lazy next/dynamic
+
+
